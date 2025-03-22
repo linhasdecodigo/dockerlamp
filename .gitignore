@@ -4,7 +4,7 @@
 # Ignorar todo o conteúdo das pastas
 app/*
 config/*
-#data/*
+data/*
 data/db/*
 data/cache/*
 data/storage/*
