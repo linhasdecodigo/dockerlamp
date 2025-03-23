@@ -122,6 +122,11 @@ RUN a2dissite 000-default.conf
 # Copiar a configuração padrão do Apache
 COPY app.conf /tmp/app.conf
 
+# Instalar o pacote gettext, necessário para usar o comando envsubst,
+# que permite substituir variáveis nos arquivos de configuração
+RUN apt-get update && apt-get install -y gettext \
+    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 # Copiar o script de entrada para dentro do container e garantir que ele tenha permissão de execução
 COPY entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
